@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Album Tracker</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Album Library</h1>
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-number" id="total-albums">0</span>
+                    <span class="stat-label">Total Albums</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" id="listened-albums">0</span>
+                    <span class="stat-label">Listened</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number" id="unlistened-albums">0</span>
+                    <span class="stat-label">Unlistened</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="unlistened">Unlistened</button>
+            <button class="filter-btn" data-filter="listened">Listened</button>
+        </div>
+
+        <div class="albums-grid" id="albums-grid">
+            <!-- Albums will be loaded here -->
+        </div>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
