@@ -54,5 +54,23 @@ def toggle_listened():
     
     return jsonify({'success': False, 'error': 'Album not found'}), 404
 
+@app.route('/api/rate-album', methods=['POST'])
+def rate_album():
+    data = request.json
+    album_id = data.get('album_id')
+    rating = data.get('rating')
+    
+    albums = load_albums()
+    
+    if album_id in albums:
+        if 1 <= rating <= 5:
+            albums[album_id]['rating'] = rating
+            save_albums(albums)
+            return jsonify({'success': True})
+        else:
+            return jsonify({'success': False, 'error': 'Rating must be 1-5'}), 400
+    
+    return jsonify({'success': False, 'error': 'Album not found'}), 404
+
 if __name__ == '__main__':
     app.run(debug=True, port=5000)

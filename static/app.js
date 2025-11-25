@@ -83,11 +83,34 @@ function displayAlbums() {
                 </span>
                 ${album.rating ? `<span class="rating">${'★'.repeat(album.rating)}</span>` : ''}
             </div>
+            ${album.listened && !album.rating ? `
+                <div class="rating-selector">
+                    ${[1, 2, 3, 4, 5].map(star => 
+                        `<button class="star-btn" onclick="rateAlbum('${album.id}', ${star}, event)">★</button>`
+                    ).join('')}
+                </div>
+            ` : ''}
             <button class="mark-listened-btn" onclick="toggleListened('${album.id}', event)">
                 ${album.listened ? 'Mark Unlistened' : 'Mark Listened'}
             </button>
         </div>
     `).join('');
+}
+
+async function rateAlbum(albumId, rating, event) {
+    event.stopPropagation();
+    
+    const response = await fetch('/api/rate-album', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ album_id: albumId, rating: rating })
+    });
+    
+    if (response.ok) {
+        await loadAlbums();
+    }
 }
 
 async function toggleListened(albumId, event) {

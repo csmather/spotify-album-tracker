@@ -193,3 +193,25 @@ h1 {
 .mark-listened-btn:hover {
     background: #1db954;
 }
+
+.rating-selector {
+    display: flex;
+    gap: 4px;
+    margin-top: 8px;
+    justify-content: center;
+}
+
+.star-btn {
+    background: none;
+    border: none;
+    color: #666;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0;
+    transition: color 0.2s;
+}
+
+.star-btn:hover {
+    color: #ffd700;
+    transform: scale(1.2);
+}
