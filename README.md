@@ -129,22 +129,3 @@ MIT License - feel free to use this for your own Spotify library tracking!
 ## Contributing
 
 This is a personal project, but suggestions and improvements are welcome! Open an issue or submit a pull request.
-```
-
-**Take a screenshot:**
-
-Open your web app, make sure it looks good, and take a screenshot. Save it as `screenshot.png` in your project root.
-
-**Update your `.gitignore`:**
-
-Make sure these are in there:
-```
-.env
-albums_data.json
-__pycache__/
-*.pyc
-*.db
-venv/
-.vscode/
-.cache
-screenshot.png
