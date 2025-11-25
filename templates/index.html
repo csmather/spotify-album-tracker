@@ -26,10 +26,24 @@
             </div>
         </header>
 
-        <div class="filters">
-            <button class="filter-btn active" data-filter="all">All</button>
-            <button class="filter-btn" data-filter="unlistened">Unlistened</button>
-            <button class="filter-btn" data-filter="listened">Listened</button>
+        <div class="controls">
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="unlistened">Unlistened</button>
+                <button class="filter-btn" data-filter="listened">Listened</button>
+            </div>
+            
+            <div class="sort-control">
+                <label for="sort-select">Sort by:</label>
+                <select id="sort-select">
+                    <option value="added-newest" selected>Date Added (Newest)</option>
+                    <option value="added-oldest">Date Added (Oldest)</option>
+                    <option value="name">Album Name</option>
+                    <option value="artist">Artist Name</option>
+                    <option value="release-newest">Release Date (Newest)</option>
+                    <option value="release-oldest">Release Date (Oldest)</option>
+                </select>
+            </div>
         </div>
 
         <div class="albums-grid" id="albums-grid">
