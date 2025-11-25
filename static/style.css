@@ -215,3 +215,26 @@ h1 {
     color: #ffd700;
     transform: scale(1.2);
 }
+
+.sync-btn {
+    margin-top: 20px;
+    padding: 12px 24px;
+    background: #1db954;
+    color: #000;
+    border: none;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.sync-btn:hover {
+    background: #1ed760;
+}
+
+.sync-btn:disabled {
+    background: #404040;
+    color: #666;
+    cursor: not-allowed;
+}

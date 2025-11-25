@@ -72,5 +72,24 @@ def rate_album():
     
     return jsonify({'success': False, 'error': 'Album not found'}), 404
 
+@app.route('/api/sync-spotify', methods=['POST'])
+def sync_spotify():
+    import spotipy
+    from spotipy.oauth2 import SpotifyOAuth
+    from album_database import sync_spotify_library
+    
+    try:
+        sp = spotipy.Spotify(auth_manager=SpotifyOAuth(
+            client_id=os.getenv('SPOTIPY_CLIENT_ID'),
+            client_secret=os.getenv('SPOTIPY_CLIENT_SECRET'),
+            redirect_uri=os.getenv('SPOTIPY_REDIRECT_URI'),
+            scope="user-library-read user-read-currently-playing user-read-playback-state"
+        ))
+        
+        albums = sync_spotify_library(sp)
+        return jsonify({'success': True, 'total': len(albums)})
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
 if __name__ == '__main__':
     app.run(debug=True, port=5000)

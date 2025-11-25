@@ -146,5 +146,32 @@ document.getElementById('sort-select').addEventListener('change', (e) => {
     displayAlbums();
 });
 
+// Sync Spotify Library button
+document.getElementById('sync-spotify-btn').addEventListener('click', async () => {
+    const btn = document.getElementById('sync-spotify-btn');
+    btn.disabled = true;
+    btn.textContent = 'Syncing...';
+    
+    try {
+        const response = await fetch('/api/sync-spotify', {
+            method: 'POST'
+        });
+        
+        const data = await response.json();
+        
+        if (data.success) {
+            alert(`Sync complete! Library now has ${data.total} albums.`);
+            await loadAlbums();
+        } else {
+            alert(`Sync failed: ${data.error}`);
+        }
+    } catch (error) {
+        alert('Sync failed: ' + error.message);
+    }
+    
+    btn.disabled = false;
+    btn.textContent = 'Sync Spotify Library';
+});
+
 // Load albums on page load
 loadAlbums();
